@@ -21,7 +21,6 @@ public class TokenService {
     private String secret;
 
     public String gerarToken(Usuario usuario) {
-        System.out.println(secret);
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
@@ -38,7 +37,7 @@ public class TokenService {
     public String getSubject(String tokenJWT) {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
-            return JWTVerifier verifier = JWT.require(algoritmo)
+            return JWT.require(algoritmo)
                     .withIssuer("API Voll.med")
                     .build()
                     .verify(tokenJWT)
