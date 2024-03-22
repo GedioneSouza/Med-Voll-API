@@ -1,4 +1,4 @@
-package med.voll.api.domain.consulta.validacoes;
+package med.voll.api.domain.consulta.validacoes.agendamento;
 
 import med.voll.api.domain.ValidacaoException;
 import med.voll.api.domain.consulta.DadosAgendamentoConsulta;
@@ -18,7 +18,7 @@ public class ValidadorMedicoAtivo implements ValidadorAgendamentoDeConsulta {
 
         var medicoEstaAtivo = repository.findAtivoById(dados.idMedico());
         if (!medicoEstaAtivo) {
-            throw new ValidacaoException("Consulta não pode ser agendada com médico");
+            throw new ValidacaoException("Consulta não pode ser agendada com este médico");
         }
     }
 }
