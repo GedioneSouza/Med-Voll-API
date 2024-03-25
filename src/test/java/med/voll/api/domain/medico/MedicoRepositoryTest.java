@@ -36,14 +36,14 @@ class MedicoRepositoryTest {
     void escolherMedicoAleatorioLivreNaDataCenario1() {
         var proximaSegundaAs10 = LocalDate.now()
                 .with(TemporalAdjusters.next(DayOfWeek.MONDAY))
-                .atTime(11, 0);
+                .atTime(14, 10);
 
         var medico = cadastrarMedico("Medico", "medico@voll.med", "123456", Especialidade.CARDIOLOGIA);
         var paciente = cadastrarPaciente("Paciente", "paciente@gmail.com", "000000000000");
         cadastrarConsulta(medico, paciente, proximaSegundaAs10);
 
 
-        var medicoLivre = medicoRepository.escolherMedicoAleatorioLivreNaData(Especialidade.CARDIOLOGIA, proximaSegundaAs10);
+        var medicoLivre = medicoRepository.escolherMedicoAleatorioLivreNaData(Especialidade.ORTOPEDIA, proximaSegundaAs10);
         assertThat(medicoLivre).isNull();
     }
 
